@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- metaはメタデータを表す（文書の情報） -->
+    <title>Eelテスト</title>
+</head>    
+<body>
+    <h2>Eelテスト</h2>
+    <div>
+        CSVファイル名<input type="file_name" value="source.csv">
+        検索ワード<input id="search_word" type="text">
+        <button id="search_btn">検索</button>
+    </div>
+    <div>
+        <textarea name="" id="result" cols="30" rows="30"></textarea>
+    </div>
+
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <!-- typeは言語を選択、srcは読み込む外部スクリプト -->
+    <!-- /eel.jsという名称のファイルに記述されたjavascriptプログラムを実行することができる -->
+    <script type="text/javascript">
+
+        document.getElementById("search_btn").addEventListener('click', async () => {
+           const res = await eel.wanpi_search(search_word.value, file_name.value);
+           console.log(res);    
+        });
+
+        eel.expose(view_log_js);
+        function view_log_js(text){
+            result.value += text + "\n";
+        }
+
+    </script>
+</body>
+</html>
