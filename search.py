@@ -1,11 +1,6 @@
 import eel
 import pandas as pd
 
-eel.init("web")
-eel.start("main.html")
-
-
-@ eel.expose
 def wanpi_search(word, csv_name):
     
     df = pd.read_csv(f"{csv_name}")
